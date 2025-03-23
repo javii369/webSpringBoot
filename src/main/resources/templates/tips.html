@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <h1 th:text="${message}"></h1>
+    <p th:text="${#temporals.format(fecha,'dd/MMM/yyyy HH:mm')}"> Fecha y hora></p>
+<ul th:each="producto : ${productos}"
+    th:styleappend="${producto.estado} ? 'background-color:yellow;'" >
+    <li>
+        <span th:text="${producto.id}"></span>
+    </li>
+    <li>
+        <span th:text="${producto.nombre}"></span>
+    </li>
+    <li>
+        <span th:text="${producto.precio}"></span>
+    </li>
+    <li>
+        <span th:text="${producto.estado}"></span>
+    </li>
+    <li>
+        <a th:href="@{/producto/{id}/details(id=${producto.id})}">Ver mas</a>
+    </li>
+</ul>
+</body>
+</html>
